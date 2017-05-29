@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+div.emptySeat {
+	background-image: url("../image/emptySeat.PNG");
+	width: 9px;
+	height: 9px;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+div.fillSeat {
+	background-image: url("../image/fillSeat.PNG");
+	width: 8px;
+	height: 8px;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	position: absolute;
+}
+
+div.theater {
+	background-image: url("../image/theater.png");
+	width: 165px;
+	height: 105px;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	position: relative;
+}
