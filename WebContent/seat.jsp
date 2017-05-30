@@ -9,25 +9,70 @@
 <script type="text/javascript">
 $(function() {
 	
-	initSeat();
+	// 시간 변경 시 좌석 새로고침
+	$("#selDate").on("change", function(){
+		
+		clearSeat();
+		
+		if($(this).val() != ""){
+			initSeat();
+		}
+	});
 	
+	// 좌석 초기화
+	function clearSeat(){
+		$(".theater").children(".fillSeat").remove();
+	}
+	
+	// 랜덤으로 좌석 출력
 	function initSeat(){
-		var seatArray = [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1];
+		var seatArray = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
 		var xIndex = 0;
 		var yIndex = 1;
 		
-		for(var i = 0; i < 14 ; i++){
-
-			var clsName = "fillSeat";
+		// 랜덤 좌석수 (0 ~ 10)
+		var seatCnt = Math.floor(Math.random() * 11);
+		
+		for(var seat = 0 ; seat < seatCnt ; seat++){
+			// 랜덤 x좌표  (0 ~ 14)
+			var ranX = Math.floor(Math.random() * 15);
+			// 랜덤 y좌표  (0 ~ 9)
+			var ranY = Math.floor(Math.random() * 10);
 			
-			if(i % 2 == 0){
-				xIndex += 11;
-			}else{
-				xIndex += 10;
+			seatArray[ranY][ranX] = 1;
+		}
+		
+		
+		for(var j = 0 ; j <10 ; j++){
+			for(var i = 0 ; i < 14 ; i++){
+	
+				var clsName = "fillSeat";
+				
+				if(i % 2 == 0){
+					xIndex += 11;
+				}else{
+					xIndex += 10;
+				}
+				
+				if(seatArray[j][i] == 1){
+					$(".theater").append("<div class=\"" + clsName +"\" style=\"left:" + xIndex + "px; top:" + yIndex+ "px;\"></div>");
+				}
 			}
+			xIndex = 0;
 			
-			if(seatArray[i] == 1){
-				$(".theater").append("<div class=\"" + clsName +"\" style=\"left:" + xIndex + "px;\"></div>");
+			if(j % 2 == 0){
+				yIndex += 10;
+			}else{
+				yIndex += 11;
 			}
 		}
 	}
@@ -38,8 +83,16 @@ $(function() {
 </head>
 <body>
 
-<div class="theater">
-	
+<div id="top">
+	<select id="selDate">
+		<option value="">시간선택</option>
+		<option value="1">14:00</option>
+		<option value="2">18:00</option>
+	</select>
+</div>
+<div id="contents">
+	<div class="theater">
+	</div>
 </div>
 
 </body>
