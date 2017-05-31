@@ -8,12 +8,25 @@
 	margin: 0 0 0 85px;
 }
 
+.btnArea {
+	margin: 0 auto;
+}
+
 .emptySeat {
 	background-image: url("../image/emptySeat.PNG");
 	width: 9px;
 	height: 9px;
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
+}
+
+.selectedSeat {
+	background-image: url("../image/selectedSeat.PNG");
+	width: 8px;
+	height: 8px;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	position: absolute;
 }
 
 .fillSeat {
@@ -34,3 +47,8 @@
 	position: relative;
 }
 
+#btnFinish {
+	background-image: url("../image/btnFinish.png");
+	width: 165px;
+	height: 105px;
+}

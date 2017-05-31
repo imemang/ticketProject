@@ -19,9 +19,17 @@ $(function() {
 		}
 	});
 	
+	$(".theater").on("click", ".fillSeat", function(){
+		$(this).removeClass("fillSeat").addClass("selectedSeat");
+	});
+	
+	$(".theater").on("click", ".selectedSeat", function(){
+		$(this).removeClass("selectedSeat").addClass("fillSeat");
+	});
+	
 	// 좌석 초기화
 	function clearSeat(){
-		$(".theater").children(".fillSeat").remove();
+		$(".theater").children(".fillSeat, .selectedSeat").remove();
 	}
 	
 	// 랜덤으로 좌석 출력
@@ -36,6 +44,8 @@ $(function() {
 						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+		var seatIndex = ['A', 'B', 'C', '1', '2', '3', '4', '5', '6', '7'];
+		
 		var xIndex = 0;
 		var yIndex = 1;
 		
@@ -56,6 +66,7 @@ $(function() {
 			for(var i = 0 ; i < 14 ; i++){
 	
 				var clsName = "fillSeat";
+				var seatName = seatIndex[j] + (i+1) + "";
 				
 				if(i % 2 == 0){
 					xIndex += 11;
@@ -64,7 +75,7 @@ $(function() {
 				}
 				
 				if(seatArray[j][i] == 1){
-					$(".theater").append("<div class=\"" + clsName +"\" style=\"left:" + xIndex + "px; top:" + yIndex+ "px;\"></div>");
+					$(".theater").append("<div class=\"" + clsName + "\" name=\"" + seatName + "\" style=\"left:" + xIndex + "px; top:" + yIndex+ "px;\"></div>");
 				}
 			}
 			xIndex = 0;
@@ -93,7 +104,9 @@ $(function() {
 <div id="contents">
 	<div class="theater">
 	</div>
+	<div class="btnArea">
+		<a id="btnFinish"></a>
+	</div>
 </div>
-
 </body>
 </html>
