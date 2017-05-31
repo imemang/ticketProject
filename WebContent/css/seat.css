@@ -1,12 +1,67 @@
 @CHARSET "UTF-8";
 
+a { cursor: pointer; }
+
+#popup {
+	background-image: url("../image/bgPopup.png");
+	width: 900px;
+	height: 672px;
+	padding: 5px 0 0 0;
+}
+
+#top {
+	margin: 0 0 0 10px;
+	width: 882px;
+	height: 44px;
+}
+
 #contents {
-	margin: 10px 0 0 0;
+	margin: 5px 0 0 10px;
+	width: 658px;
+	height: 619px;
+	position: relative;
+	float: left;
+}
+
+#info {
+	margin: 5px 0 0 0;
+	width: 222px;
+	height: 620px;
+	position: relative;
+	float: left;
 }
 
 #top select{
-	margin: 0 0 0 85px;
+	margin: 19px 0 0 545px;
 }
+
+.info1 { 
+	height: 198px;
+	margin: 0 0 0 5px;
+}
+
+.info2 { 
+	height: 150px;
+	margin: 5px 0 0 5px;
+}
+
+.info3 { 
+	height: 70px;
+	margin: 53px 0 0 5px;
+	overflow: auto;
+}
+
+.info3 p {
+	padding: 0 0 0 80px;
+	font: 12px sans-serif;
+	margin: 2px 0 0 0;
+}
+
+.btnArea {
+	height: 70px;
+	margin: 6px 0 0 5px;
+}
+
 
 .emptySeat {
 	background-image: url("../image/emptySeat.PNG");
@@ -14,6 +69,15 @@
 	height: 9px;
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
+}
+
+.selectedSeat {
+	background-image: url("../image/selectedSeat.PNG");
+	width: 8px;
+	height: 8px;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	position: absolute;
 }
 
 .fillSeat {
@@ -26,11 +90,42 @@
 }
 
 .theater {
+	display: block;
 	background-image: url("../image/theater.png");
-	width: 165px;
-	height: 105px;
-	padding: 0 0 0 0;
-	margin: 0 0 0 0;
-	position: relative;
+	width: 166px;
+	height: 104px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -52px 0 0 -83px;
 }
 
+#btnFinish {
+	display: block;
+	background-image: url("../image/btnFinish.png");
+	width: 216px;
+	height: 40px;
+	position: relative;
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#btnPrev {
+	display: block;
+	background-image: url("../image/btnPrev.png");
+	width: 106px;
+	height: 23px;
+	position: relative;
+	float: left;
+	margin: 4px 0 0 0;
+}
+
+#btnReset {
+	display: block;
+	background-image: url("../image/btnReset.png");
+	width: 106px;
+	height: 23px;
+	position: relative;
+	float: left;
+	margin: 4px 0 0 5px;
+}

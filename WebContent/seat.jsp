@@ -19,9 +19,27 @@ $(function() {
 		}
 	});
 	
+	$(".theater").on("click", ".fillSeat", function(){
+		$(this).removeClass("fillSeat").addClass("selectedSeat");
+		
+		var seatName = $(this).attr("name");
+		var seatXY = seatName.split("$");
+		var displayText = "1층 - " + seatXY[0] + "열 - " + seatXY[1];
+		
+		$(".info3").append("<p name=\"" + seatName + "\">" + displayText + "</p>");
+		
+	});
+	
+	$(".theater").on("click", ".selectedSeat", function(){
+		$(this).removeClass("selectedSeat").addClass("fillSeat");
+		var seatName = $(this).attr("name");
+		
+		$(".info3").find("p[name='" + seatName + "']").remove();
+	});
+	
 	// 좌석 초기화
 	function clearSeat(){
-		$(".theater").children(".fillSeat").remove();
+		$(".theater").children(".fillSeat, .selectedSeat").remove();
 	}
 	
 	// 랜덤으로 좌석 출력
@@ -36,6 +54,8 @@ $(function() {
 						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+		var seatIndex = ['A', 'B', 'C', '1', '2', '3', '4', '5', '6', '7'];
+		
 		var xIndex = 0;
 		var yIndex = 1;
 		
@@ -56,6 +76,7 @@ $(function() {
 			for(var i = 0 ; i < 14 ; i++){
 	
 				var clsName = "fillSeat";
+				var seatName = seatIndex[j] + "$" + (i+1) + "";
 				
 				if(i % 2 == 0){
 					xIndex += 11;
@@ -64,7 +85,7 @@ $(function() {
 				}
 				
 				if(seatArray[j][i] == 1){
-					$(".theater").append("<div class=\"" + clsName +"\" style=\"left:" + xIndex + "px; top:" + yIndex+ "px;\"></div>");
+					$(".theater").append("<div class=\"" + clsName + "\" name=\"" + seatName + "\" style=\"left:" + xIndex + "px; top:" + yIndex+ "px;\"></div>");
 				}
 			}
 			xIndex = 0;
@@ -82,18 +103,28 @@ $(function() {
 
 </head>
 <body>
-
-<div id="top">
-	<select id="selDate">
-		<option value="">시간선택</option>
-		<option value="1">14:00</option>
-		<option value="2">18:00</option>
-	</select>
-</div>
-<div id="contents">
-	<div class="theater">
+<div id="popup">
+	<div id="top">
+		<select id="selDate">
+			<option value="">시간선택</option>
+			<option value="1">14:00</option>
+			<option value="2">18:00</option>
+		</select>
+	</div>
+	<div id="contents">
+		<div class="theater">
+		</div>
+	</div>
+	<div id="info">
+		<div class="info1"></div>
+		<div class="info2"></div>
+		<div class="info3"></div>
+		<div class="btnArea">
+			<a id="btnFinish"></a>
+			<a id="btnPrev"></a>
+			<a id="btnReset"></a>
+		</div>
 	</div>
 </div>
-
 </body>
 </html>
