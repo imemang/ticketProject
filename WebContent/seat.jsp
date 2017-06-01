@@ -21,8 +21,6 @@ $(function() {
 	
 	$(".theater").on("click", ".fillSeat", function(){
 		$(this).removeClass("fillSeat").addClass("selectedSeat");
-<<<<<<< HEAD
-		
 		var seatName = $(this).attr("name");
 		var seatXY = seatName.split("$");
 		var displayText = "1층 - " + seatXY[0] + "열 - " + seatXY[1];
@@ -36,12 +34,6 @@ $(function() {
 		var seatName = $(this).attr("name");
 		
 		$(".info3").find("p[name='" + seatName + "']").remove();
-=======
-	});
-	
-	$(".theater").on("click", ".selectedSeat", function(){
-		$(this).removeClass("selectedSeat").addClass("fillSeat");
->>>>>>> branch 'master' of https://github.com/imemang/ticketProject.git
 	});
 	
 	// 좌석 초기화
@@ -83,11 +75,7 @@ $(function() {
 			for(var i = 0 ; i < 14 ; i++){
 	
 				var clsName = "fillSeat";
-<<<<<<< HEAD
 				var seatName = seatIndex[j] + "$" + (i+1) + "";
-=======
-				var seatName = seatIndex[j] + (i+1) + "";
->>>>>>> branch 'master' of https://github.com/imemang/ticketProject.git
 				
 				if(i % 2 == 0){
 					xIndex += 11;
