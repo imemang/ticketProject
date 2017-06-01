@@ -124,9 +124,6 @@ $(function() {
 			<a id="btnReset"></a>
 		</div>
 	</div>
-	<div class="btnArea">
-		<a id="btnFinish"></a>
-	</div>
 </div>
 </body>
 </html>
