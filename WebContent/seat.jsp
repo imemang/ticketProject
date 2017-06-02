@@ -9,6 +9,15 @@
 <script type="text/javascript">
 $(function() {
 	
+	/* 
+		시간측정 
+		new Date().getTime();
+		returns the number of milliseconds between midnight of January 1, 1970 and the specified date.
+		1000 millisecond = 1 second;
+	*/
+	var startTime = null;
+	var endTime = null;
+	
 	// 시간 변경 시 좌석 새로고침
 	$("#selDate").on("change", function(){
 		
@@ -16,9 +25,11 @@ $(function() {
 		
 		if($(this).val() != ""){
 			initSeat();
+			startTime = new Date().getTime();
 		}
 	});
 	
+	// 선택 가능한 좌석 선택
 	$(".theater").on("click", ".fillSeat", function(){
 		$(this).removeClass("fillSeat").addClass("selectedSeat");
 		var seatName = $(this).attr("name");
@@ -29,6 +40,7 @@ $(function() {
 		
 	});
 	
+	// 선택된 좌석 선택
 	$(".theater").on("click", ".selectedSeat", function(){
 		$(this).removeClass("selectedSeat").addClass("fillSeat");
 		var seatName = $(this).attr("name");
@@ -36,9 +48,31 @@ $(function() {
 		$(".info3").find("p[name='" + seatName + "']").remove();
 	});
 	
+	// 버튼 : 좌석선택완료
+	$("#btnFinish").on("click", function(){
+		endTime = new Date().getTime();
+		
+		if(startTime !== null){
+			// "[startTime] : " + startTime + " \n[endTime] : " + endTime + "\n[diff] : " + ((endTime - startTime)/1000) + "sec"
+			alert(((endTime - startTime)/1000) + "sec");
+			
+		}else{
+			alert("좌석을 선택해주세요.");
+			return false;
+		}
+	});
+	
+	// 버튼 : 좌석다시선택
+	$("#btnReset").on("click", function(){
+		clearSeat();
+		initSeat();
+		startTime = new Date().getTime();
+	});
+	
 	// 좌석 초기화
 	function clearSeat(){
 		$(".theater").children(".fillSeat, .selectedSeat").remove();
+		$(".info3").children("p").remove();
 	}
 	
 	// 랜덤으로 좌석 출력
